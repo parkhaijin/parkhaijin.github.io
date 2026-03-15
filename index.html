@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hai Jin Park</title>
+  <style>
+    :root {
+      --primary: #222;
+      --accent: #555;
+      --link: #1a0dab;
+      --border: #ccc;
+      --light-bg: #fafafa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Times New Roman", Georgia, serif;
+      color: var(--primary);
+      background: #fff;
+      line-height: 1.65;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .photo-placeholder {
+      width: 160px;
+      height: 200px;
+      background: #e8e8e8;
+      border: 1px solid #ccc;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      color: #999;
+    }
+    .header-info h1 {
+      font-size: 1.8rem;
+      margin-bottom: 2px;
+      letter-spacing: -0.3px;
+    }
+    .header-info .kr-name {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .header-info .position {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .header-info .affiliation {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 12px;
+    }
+    .contact {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    .contact a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    .contact a:hover { text-decoration: underline; }
+
+    /* ── Navigation ── */
+    nav {
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+    }
+    nav a {
+      color: var(--link);
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* ── Sections ── */
+    section { margin-bottom: 36px; }
+    h2 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* ── About ── */
+    .about p { text-align: justify; margin-bottom: 10px; }
+
+    /* ── Research Interests ── */
+    .interests {
+      font-size: 0.95rem;
+      line-height: 2;
+    }
+    .interest-tag {
+      display: inline-block;
+      background: var(--light-bg);
+      border: 1px solid #ddd;
+      padding: 3px 10px;
+      margin: 2px 4px 2px 0;
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      color: #444;
+    }
+
+    /* ── Publications ── */
+    .pub-item {
+      margin-bottom: 14px;
+      padding-left: 18px;
+      text-indent: -18px;
+    }
+    .pub-item .venue { font-style: italic; }
+    .pub-item .note {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: #777;
+    }
+    .pub-sub { margin-top: 20px; margin-bottom: 10px; font-weight: bold; font-size: 1rem; }
+
+    /* ── Positions / Education ── */
+    .entry {
+      margin-bottom: 12px;
+    }
+    .entry .title-line {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .entry .role { font-weight: bold; }
+    .entry .dates {
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      color: #666;
+      white-space: nowrap;
+    }
+    .entry .detail {
+      font-size: 0.93rem;
+      color: #444;
+      margin-top: 2px;
+      padding-left: 12px;
+    }
+
+    /* ── Teaching ── */
+    .teaching-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .teaching-item .course { flex: 1; }
+    .teaching-item .years {
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      color: #888;
+      text-align: right;
+      flex-shrink: 0;
+      margin-left: 20px;
+    }
+
+    /* ── Service ── */
+    .service-item {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+    .service-item .org { font-style: italic; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 50px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      color: #999;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .header { flex-direction: column; align-items: center; text-align: center; }
+      .entry .title-line { flex-direction: column; }
+      .teaching-item { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="photo.jpg" alt="Hai Jin Park" style="width:160px; height:auto; border:1px solid #ccc; border-radius:4px; flex-shrink:0;">
+    <div class="header-info">
+      <h1>Hai Jin Park</h1>
+      <div class="kr-name">박혜진 (朴彗辰)</div>
+      <div class="position">Professor of Law</div>
+      <div class="affiliation">Hanyang University School of Law</div>
+      <div class="affiliation">Visiting Scholar, Stanford Law School (Jan.–Jun. 2025)</div>
+      <div class="contact">
+        222 Wangsimni-ro, Seongdong-gu, Seoul, Korea<br>
+        <a href="mailto:haijinpark@hanyang.ac.kr">haijinpark@hanyang.ac.kr</a><br>
+        <a href="https://scholar.google.com/citations?user=Dy9l44YAAAAJ&hl=ko">Google Scholar</a> ·
+        <a href="https://ssrn.com/">SSRN</a> ·
+        <a href="https://github.com/parkhaijin">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#service">Service</a>
+    <a href="#awards">Awards</a>
+    <a href="#cv">CV</a>
+  </nav>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="about">
+      <p>I am a Professor of Law at Hanyang University School of Law, where I also serve as Director of the AI and Law Research Center. My research lies at the intersection of law and economics, computational law, and empirical legal studies. I apply quantitative and computational methods—including natural language processing, machine learning, and experimental design—to problems in civil liability, AI governance, and legal decision-making.</p>
+      <p>I received my J.S.D. and J.S.M. from Stanford Law School (Ph.D. minor in Computer Science) and a B.A. in Law from Seoul National University. Before joining academia, I practiced as an attorney at Kim &amp; Chang and served as a judge in the Korean judiciary.</p>
+    </div>
+  </section>
+
+  <!-- Research Interests -->
+  <section id="research">
+    <h2>Research Interests</h2>
+    <div class="interests">
+      <span class="interest-tag">Law &amp; Economics</span>
+      <span class="interest-tag">Computational Law</span>
+      <span class="interest-tag">Empirical Legal Studies</span>
+      <span class="interest-tag">AI Governance</span>
+      <span class="interest-tag">Legal NLP</span>
+      <span class="interest-tag">Medical AI &amp; Liability</span>
+      <span class="interest-tag">Cybersecurity Law</span>
+      <span class="interest-tag">Civil Liability</span>
+      <span class="interest-tag">Class Actions</span>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub-sub">Journal Articles</div>
+
+    <div class="pub-item">
+      Mediating under the Shadow of AI: Public Reactions to Procedural and Substantive Roles of AI in Court-Annexed Mediation, <span class="venue">Computer Law &amp; Security Review</span> (under review after R&amp;R) <span class="note">(SSCI Q1; sole author)</span>
+    </div>
+
+    <div class="pub-item">
+      Adapting Large Language Models to Korean Legal Tasks, <span class="venue">Transactions on Asian and Low-Resource Language Information Processing</span> (under review after R&amp;R) <span class="note">(SSCI; corresponding author)</span>
+    </div>
+
+    <div class="pub-item">
+      AI-Generated Technical Disclosures as Prior Art: Focusing on Public Availability and Enablement [인공지능 생성 기술문서의 선행기술성], <span class="venue">Hanyang Law Review</span> (Mar. 2026)
+    </div>
+
+    <div class="pub-item">
+      An Empirical Analysis of the Decision-Making Structure for Punitive Damages: Focusing on Patent and Trademark Cases [징벌적 손해배상의 판단 구조에 대한 실증적 분석], <span class="venue">Bupjo</span>, Vol. 75, No. 1 (Feb. 2026)
+    </div>
+
+    <div class="pub-item">
+      Assessing Gender Bias in a Digital Platform for Lawyers: A Web-based Experiment in South Korea, 56 <span class="venue">Cornell International Law Journal</span> 223 (Aug. 2025) <span class="note">(SSCI; sole author)</span>
+    </div>
+
+    <div class="pub-item">
+      Developing a Pragmatic Benchmark for Assessing Korean Legal Language Understanding in Large Language Models, <span class="venue">EMNLP 2024</span> (Nov. 2024) <span class="note">(co-author)</span>
+    </div>
+
+    <div class="pub-item">
+      The Contribution of Legal Scholarship in a New Era [새로운 시대환경에서 법학의 기여], <span class="venue">Law and Society</span>, No. 77 (Oct. 2024) <span class="note">(first author)</span>
+    </div>
+
+    <div class="pub-item">
+      Sudden Acceleration Accidents and Presumption of Defect and Causation [자동차 급발진 사고와 결함 및 인과관계의 추정], <span class="venue">Korean Journal of Comparative Private Law</span>, Vol. 31, No. 2 (May 2024)
+    </div>
+
+    <div class="pub-item">
+      Patient Perspectives on Informed Consent for Medical AI: A Web-based Experiment, 10 <span class="venue">Digital Health</span> 1 (Apr. 2024) <span class="note">(SSCI Q1; sole author)</span>
+    </div>
+
+    <div class="pub-item">
+      Explainability in Medical AI [의료인공지능과 설명가능성], <span class="venue">Journal of Information Law</span>, Vol. 27, No. 3 (Dec. 2023)
+    </div>
+
+    <div class="pub-item">
+      A Physician's Duty to Inform a Minor Patient with Decision-Making Capacity, <span class="venue">Bupjo</span>, Vol. 72, No. 4 (Oct. 2023)
+    </div>
+
+    <div class="pub-item">
+      Sentencing and Artificial Intelligence: Public Sentiment, Risk Assessment, and Sentencing Analysis [양형과 인공지능], <span class="venue">Bupjo</span>, Vol. 72, No. 3 (Aug. 2023)
+    </div>
+
+    <div class="pub-item">
+      Data-efficient End-to-end Information Extraction for Statistical Legal Analysis, <span class="venue">NLLP Workshop @ EMNLP 2022</span> (Dec. 2022) <span class="note">(co-author)</span>
+    </div>
+
+    <div class="pub-item">
+      Legal Challenges in the Use of Medical AI: Regulatory Evolution and Liability Allocation [의료 인공지능의 활용을 둘러싼 법적 과제], <span class="venue">Korean Journal of Comparative Private Law</span>, Vol. 29, No. 4 (Nov. 2022)
+    </div>
+
+    <div class="pub-item">
+      Standards of Proof in Civil Litigation: Comparative and Behavioral Perspectives [비교법적, 행동주의적 관점에서 본 민사소송의 증명도], <span class="venue">Human Rights and Justice</span>, No. 494 (Dec. 2020)
+    </div>
+
+    <div class="pub-item">
+      The Volkswagen Consumer Class Action Settlement in the United States [미국 폭스바겐 소비자 집단소송의 화해], <span class="venue">Environmental Law and Policy</span>, Vol. 25 (Sep. 2020)
+    </div>
+
+    <div class="pub-item">
+      Class Action Scarcity: An Empirical Analysis of the Securities Class Action in Korea, 21 <span class="venue">European Business Organization Law Review</span> 665 (Sep. 2020) <span class="note">(SSCI Q2; sole author)</span>
+    </div>
+
+    <div class="pub-item">
+      Practical Issues in Debt-to-Equity Conversion in Corporate Rehabilitation Proceedings [회생회사의 출자전환과 관련한 실무상의 문제점], <span class="venue">Korean Insolvency Law Review</span>, Vol. 5, No. 2 (2014) <span class="note">(co-author)</span>
+    </div>
+
+    <div class="pub-item">
+      Interpretation and Application of the Dilution Clause in Trademark Law [희석화조항의 해석·적용에 관한 연구], <span class="venue">Law and Technology</span>, Vol. 7, No. 4 (Jul. 2011)
+    </div>
+
+    <div class="pub-sub">Books &amp; Book Chapters</div>
+
+    <div class="pub-item">
+      The Impact of AI on Courts and Criminal Adjudication in South Korea, in <span class="venue">The Oxford Handbook of AI and Criminal Justice</span>, Oxford University Press (Brandon Garrett ed., forthcoming 2026) <span class="note">(co-author)</span>
+    </div>
+
+    <div class="pub-item">
+      Explainability in Medical AI (chapter), in <span class="venue">Medical AI and Law</span>, Ewha Womans University Medical Law Research Institute (Aug. 2024)
+    </div>
+
+    <div class="pub-item">
+      Medical Artificial Intelligence (chapter), in <span class="venue">Artificial Intelligence and Law</span>, Parkyoungsa (Jan. 2024)
+    </div>
+
+    <div class="pub-item">
+      Securities Class Actions in South Korea, in <span class="venue">The Cambridge Handbook of Class Actions: An International Survey</span>, Cambridge University Press (Brian T. Fitzpatrick &amp; Randall S. Thomas eds., 2021) <span class="note">(first author)</span>
+    </div>
+
+  </section>
+
+  <!-- Selected Presentations -->
+  <section id="presentations">
+    <h2>Selected Presentations</h2>
+
+    <div class="pub-item">American Law and Economics Association (ALEA) Annual Meeting, Univ. of Chicago (May 2026)</div>
+    <div class="pub-item">Hong Kong University, Law and Technology Center — Invited Talk (Feb. 2026)</div>
+    <div class="pub-item">Conference on Empirical Legal Studies (CELS), Georgetown Law School (Oct. 2025)</div>
+    <div class="pub-item">Law and Society Association (LSA) Annual Meeting, Chicago (May 2025)</div>
+    <div class="pub-item">Cornell Law School — Invited Talk, Ithaca, NY (Apr. 2025)</div>
+    <div class="pub-item">Asia Law and Society Association (ALSA) Annual Meeting, Seoul (Dec. 2024)</div>
+    <div class="pub-item">Conference on Empirical Legal Studies (CELS), Univ. of Chicago (Nov. 2023)</div>
+    <div class="pub-item">Cornell Law School, Clarke Symposium, Ithaca, NY (Apr. 2023)</div>
+    <div class="pub-item">Conference on Empirical Legal Studies in Asia (CELSA), Academia Sinica, Taipei (Dec. 2022)</div>
+    <div class="pub-item">Conference on Empirical Legal Studies (CELS) — Poster, Univ. of Virginia (Oct. 2022)</div>
+  </section>
+
+  <!-- Teaching -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <div class="teaching-item"><span class="course">Property Law</span><span class="years">2026</span></div>
+    <div class="teaching-item"><span class="course">Contract Law</span><span class="years">2022–2024</span></div>
+    <div class="teaching-item"><span class="course">Obligations and Statutory Claims</span><span class="years">2021–2025</span></div>
+    <div class="teaching-item"><span class="course">Civil Law Practice II</span><span class="years">2022–2025</span></div>
+    <div class="teaching-item"><span class="course">Legal Technology Practice</span><span class="years">2023–2024, 2026</span></div>
+    <div class="teaching-item"><span class="course">Advanced Legal Technology Practice</span><span class="years">2025</span></div>
+    <div class="teaching-item"><span class="course">AI for Law (KAIST Graduate School of AI)</span><span class="years">2022</span></div>
+    <div class="teaching-item"><span class="course">AI and Law (Undergraduate)</span><span class="years">2022, 2024</span></div>
+    <div class="teaching-item"><span class="course">Legal Writing for Graduate Students</span><span class="years">2024</span></div>
+  </section>
+
+  <!-- Service -->
+  <section id="service">
+    <h2>Service &amp; Advisory Roles</h2>
+    <div class="service-item">Advisory Member, <span class="org">Sentencing Commission, Supreme Court of Korea</span></div>
+    <div class="service-item">Member, <span class="org">AI Legal Tech Special Committee, Ministry of Justice</span></div>
+    <div class="service-item">Member, <span class="org">AI Transformation Division, National Tax Service</span></div>
+    <div class="service-item">Member, <span class="org">Self-Regulation Committee, NAVER Corporation</span></div>
+    <div class="service-item">Outside Director, <span class="org">Coupang Financial Corporation</span></div>
+    <div class="service-item" style="margin-top:12px; color:#666; font-size:0.9rem;">
+      Former roles include: Legal Affairs Division, National AI Committee · AI Strategy Council, Ministry of Science and ICT · Chair, Transparency Working Group, AI Privacy Policy Council · Legal Tech Subcommittee, Ministry of Justice · Digital Platform Government Committee · Future Vision Committee, National Police Agency
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section id="awards">
+    <h2>Awards &amp; Fellowships</h2>
+    <div class="pub-item"><strong>Wi-Gong Award in Law and Economics</strong>, Korean Law and Economics Association (2026)</div>
+    <div class="pub-item">Commissioner's Commendation, Personal Information Protection Commission (2024)</div>
+    <div class="pub-item">Graduate Student Article Award — Honorable Mention, Asian Law and Society Association (2019)</div>
+    <div class="pub-item">Graduate Public Service Fellowship, Haas Center, Stanford University (2018–2019)</div>
+    <div class="pub-item">Gerald Gunther Prize for Outstanding Performance, Stanford Law School (2017)</div>
+    <div class="pub-item">SCICN Fellowship, Stanford University (2017–2018)</div>
+    <div class="pub-item">Franklin Family Fellowship Fund, Stanford Law School (2017–2018)</div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="title-line">
+        <span class="role">J.S.D., Stanford Law School</span>
+        <span class="dates">2022</span>
+      </div>
+      <div class="detail">Ph.D. Minor in Computer Science, Stanford University<br>Dissertation: "Incentivizing Cybersecurity Through Cyber Insurance and Liability"<br>Advisor: Prof. Robert L. Rabin</div>
+    </div>
+    <div class="entry">
+      <div class="title-line">
+        <span class="role">J.S.M., Stanford Law School</span>
+        <span class="dates">2018</span>
+      </div>
+      <div class="detail">Gerald Gunther Prize for Outstanding Performance<br>Advisor: Prof. Deborah Hensler</div>
+    </div>
+    <div class="entry">
+      <div class="title-line">
+        <span class="role">LL.M., Stanford Law School</span>
+        <span class="dates">2017</span>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title-line">
+        <span class="role">B.A. in Law, Seoul National University</span>
+        <span class="dates">2006</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <h2>CV</h2>
+    <p>A full curriculum vitae is available <a href="#">here (PDF)</a>.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Hai Jin Park · Hanyang University School of Law
+  </footer>
+
+</body>
+</html>
